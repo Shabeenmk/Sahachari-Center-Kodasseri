@@ -56,7 +56,8 @@
         .theme-light #returnDate,
         .theme-light #editTotalInput,
         .theme-light #editEntryDealer,
-        .theme-light #editEntryDate {
+        .theme-light #editEntryDate,
+        .theme-light #tokenInput {
             background-color: #f9fafb;
             border-color: #d1d5db;
             color: #1f2937;
@@ -70,7 +71,8 @@
         .theme-light #returnDate:focus,
         .theme-light #editTotalInput:focus,
         .theme-light #editEntryDealer:focus,
-        .theme-light #editEntryDate:focus {
+        .theme-light #editEntryDate:focus,
+        .theme-light #tokenInput:focus {
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 2px rgba(55, 88, 205, 0.2);
         }
@@ -105,7 +107,8 @@
         .theme-dark #returnDate,
         .theme-dark #editTotalInput,
         .theme-dark #editEntryDealer,
-        .theme-dark #editEntryDate {
+        .theme-dark #editEntryDate,
+        .theme-dark #tokenInput {
             background-color: #4b5e77;
             border-color: #6b7280;
             color: #d1d5db;
@@ -119,7 +122,8 @@
         .theme-dark #returnDate:focus,
         .theme-dark #editTotalInput:focus,
         .theme-dark #editEntryDealer:focus,
-        .theme-dark #editEntryDate:focus {
+        .theme-dark #editEntryDate:focus,
+        .theme-dark #tokenInput:focus {
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 2px rgba(55, 88, 205, 0.3);
         }
@@ -154,7 +158,8 @@
         .theme-pitchblack #returnDate,
         .theme-pitchblack #editTotalInput,
         .theme-pitchblack #editEntryDealer,
-        .theme-pitchblack #editEntryDate {
+        .theme-pitchblack #editEntryDate,
+        .theme-pitchblack #tokenInput {
             background-color: #333333;
             border-color: #4b5e77;
             color: #ffffff;
@@ -168,7 +173,8 @@
         .theme-pitchblack #returnDate:focus,
         .theme-pitchblack #editTotalInput:focus,
         .theme-pitchblack #editEntryDealer:focus,
-        .theme-pitchblack #editEntryDate:focus {
+        .theme-pitchblack #editEntryDate:focus,
+        .theme-pitchblack #tokenInput:focus {
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 2px rgba(55, 88, 205, 0.4);
         }
@@ -466,7 +472,7 @@
                         <div>
                             <label for="entryDate" class="text-sm font-medium text-primary-blue">Issue Date</label>
                             <div class="flex space-x-2">
-                                <input id="entryDate" type="date" max="2025-05-15" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                <input id="entryDate" type="date" max="2025-05-16" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
                                 <button onclick="setTodayDate()" class="bg-teal text-white p-3 rounded-lg hover:bg-teal-dark transition duration-200">Today</button>
                             </div>
                             <p id="dateWarning" class="warning">Issue date is required</p>
@@ -513,7 +519,7 @@
                         <div>
                             <label for="editEntryDate" class="text-sm font-medium text-primary-blue">Issue Date</label>
                             <div class="flex space-x-2">
-                                <input id="editEntryDate" type="date" max="2025-05-15" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                <input id="editEntryDate" type="date" max="2025-05-16" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
                                 <button onclick="setTodayEditDate()" class="bg-teal text-white p-3 rounded-lg hover:bg-teal-dark transition duration-200">Today</button>
                             </div>
                             <p id="editDateWarning" class="warning">Issue date is required</p>
@@ -549,7 +555,7 @@
                         <div>
                             <label for="returnDate" class="text-sm font-medium text-primary-blue">Return Date</label>
                             <div class="flex space-x-2">
-                                <input id="returnDate" type="date" max="2025-05-15" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                                <input id="returnDate" type="date" max="2025-05-16" class="p-3 border rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-primary-blue">
                                 <button onclick="setTodayReturnDate()" class="bg-teal text-white p-3 rounded-lg hover:bg-teal-dark transition duration-200">Today</button>
                             </div>
                             <p id="returnDateWarning" class="warning">Return date is required</p>
@@ -580,16 +586,72 @@
             <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
                 <h2 class="text-2xl font-semibold mb-4 text-primary-blue flex items-center"><i class="fas fa-cog mr-2"></i> Settings</h2>
                 <div class="flex flex-col space-y-4">
-                    <label for="themeSelect" class="text-lg font-medium text-primary-blue">Change Theme</label>
-                    <select id="themeSelect" class="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue" onchange="changeTheme()">
-                        <option value="system" selected>System</option>
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                        <option value="pitchblack">Pitchblack</option>
-                    </select>
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+                        <h3 class="text-lg font-semibold mb-2 text-primary-blue flex items-center"><i class="fas fa-paint-roller mr-2"></i> Change Theme</h3>
+                        <select id="themeSelect" class="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue" onchange="changeTheme()">
+                            <option value="system" selected>System</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="pitchblack">Pitchblack</option>
+                        </select>
+                    </div>
+                    <div id="dealerLoginCard" class="bg-white p-4 rounded-lg shadow-lg">
+                        <h3 class="text-lg font-semibold mb-2 text-primary-blue flex items-center"><i class="fas fa-user-lock mr-2"></i> Dealer Login</h3>
+                        <button onclick="showSection('dealerLogin')" class="bg-primary-blue text-white px-4 py-2 rounded-lg hover:bg-primary-blue-dark transition duration-200 flex items-center justify-center w-full">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Login as Dealer
+                        </button>
+                    </div>
+                    <div id="logoutCard" class="bg-white p-4 rounded-lg shadow-lg hidden">
+                        <h3 class="text-lg font-semibold mb-2 text-primary-blue flex items-center"><i class="fas fa-sign-out-alt mr-2"></i> Logout</h3>
+                        <button onclick="logoutDealer()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 flex items-center justify-center w-full">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Dealer Login Section -->
+        <section id="dealerLoginSection" class="section hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+                <h2 class="text-2xl font-semibold mb-4 text-primary-blue flex items-center"><i class="fas fa-user-lock mr-2"></i> Dealer Login</h2>
+                <div class="flex flex-col space-y-4">
+                    <div>
+                        <label for="tokenInput" class="text-sm font-medium text-primary-blue">Enter Token</label>
+                        <div class="details-box">
+                            <input id="tokenInput" type="text" placeholder="Enter your token" class="focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                        </div>
+                        <p id="tokenWarning" class="warning">Token is required</p>
+                    </div>
+                    <div class="flex space-x-3 mt-4">
+                        <button onclick="showSection('settings')" class="flex-1 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-200">Cancel</button>
+                        <button onclick="loginDealer()" class="flex-1 bg-primary-blue text-white p-3 rounded-lg hover:bg-primary-blue-dark transition duration-200">Login</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Token Warning Modal -->
+        <div id="tokenWarningModal" class="modal modal-hidden" onclick="closeTokenWarningModal(event)">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+                <h3 class="text-lg font-semibold mb-4 text-primary-blue">Invalid Token</h3>
+                <p class="text-gray-600 mb-4">The given token is invalid, this is not for you.</p>
+                <div class="flex justify-center">
+                    <button onclick="closeTokenWarningModal()" class="bg-primary-blue text-white p-3 rounded-lg hover:bg-primary-blue-dark transition duration-200">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Login Modal -->
+        <div id="successLoginModal" class="modal modal-hidden" onclick="closeSuccessLoginModal(event)">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+                <h3 class="text-lg font-semibold mb-4 text-primary-blue">Login Successful</h3>
+                <p class="text-gray-600 mb-4">Congratulations, you have been logged in as a Dealer, now you can work on Register.</p>
+                <div class="flex justify-center">
+                    <button onclick="closeSuccessLoginModal()" class="bg-primary-blue text-white p-3 rounded-lg hover:bg-primary-blue-dark transition duration-200">OK</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Bottom Navigation -->
@@ -638,9 +700,11 @@
         // Sample data for logs (empty, will be populated by Add Entry form)
         let logs = [];
 
-        // State to track edit mode
+        // State to track edit mode and dealer login
         let isEditMode = false;
         let deleteIndex = null; // To store the index for deletion
+        let isDealerLoggedIn = false; // Track dealer login status
+        const dealerToken = "sahachari2025"; // Unique token for dealer login
 
         // Function to capitalize the first letter of each word in an input field
         function capitalizeFirstLetters(input) {
@@ -963,7 +1027,7 @@
 
         // Set today's date for Edit Issue Date
         function setTodayEditDate() {
-            document.getElementById("editEntryDate").value = "2025-05-15";
+            document.getElementById("editEntryDate").value = "2025-05-16";
         }
 
         // Save edited entry
@@ -1202,7 +1266,7 @@
 
         // Set today's date for Return Date
         function setTodayReturnDate() {
-            document.getElementById("returnDate").value = "2025-05-15";
+            document.getElementById("returnDate").value = "2025-05-16";
         }
 
         // Mark as Returned
@@ -1263,11 +1327,12 @@
             document.getElementById("detailsWarning").style.display = "none";
             document.getElementById("itemsWarning").style.display = "none";
             document.getElementById("dateWarning").style.display = "none";
+            document.getElementById("tokenWarning").style.display = "none";
         }
 
         // Set today's date for Issue Date
         function setTodayDate() {
-            document.getElementById("entryDate").value = "2025-05-15";
+            document.getElementById("entryDate").value = "2025-05-16";
         }
 
         // Clear form
@@ -1363,36 +1428,3 @@
             stockFabBtn.style.display = (section === "stockInfo") ? "flex" : "none";
 
             // Reset edit mode when switching sections
-            if (section !== "stockInfo") {
-                isEditMode = false;
-                const icon = document.getElementById("stockFabIcon");
-                icon.className = "fas fa-edit text-xl";
-            }
-            loadInventory();
-        }
-
-        // Change theme
-        function changeTheme() {
-            const theme = document.getElementById("themeSelect").value;
-            const body = document.body;
-            body.classList.remove("theme-light", "theme-dark", "theme-pitchblack");
-
-            if (theme === "system") {
-                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                body.classList.add(prefersDark ? "theme-dark" : "theme-light");
-            } else {
-                body.classList.add(`theme-${theme}`);
-            }
-
-            // Refresh views to apply theme changes
-            loadInventory();
-            loadLogs();
-        }
-
-        // Initial load
-        loadInventory();
-        loadLogs();
-        showSection("stockInfo");
-    </script>
-</body>
-</html>
